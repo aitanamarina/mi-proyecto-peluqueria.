@@ -1,0 +1,313 @@
+ /* Variables CSS para una fácil modificación de colores y fuentes */
+:root {
+    --primary-color: #333; /* Gris oscuro para texto principal y fondo de cabecera/pie */
+    --secondary-color: #f4f4f4; /* Gris claro para fondos de sección */
+    --accent-color: #B8860B; /* Dorado suave para acentos (botones, enlaces, títulos) */
+    --text-light: #fff; /* Texto blanco para fondos oscuros */
+    --font-heading: 'Montserrat', sans-serif; /* Fuente para títulos */
+    --font-body: 'Open Sans', sans-serif; /* Fuente para el cuerpo del texto */
+}
+
+/* Reset básico y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye padding y border en el tamaño del elemento */
+}
+
+body {
+    font-family: var(--font-body); /* Aplica la fuente definida en las variables */
+    line-height: 1.6; /* Espaciado entre líneas */
+    color: var(--primary-color); /* Color de texto general */
+    background-color: var(--text-light); /* Color de fondo general de la página */
+}
+
+.container {
+    max-width: 1100px; /* Ancho máximo del contenido */
+    margin: auto; /* Centra el contenedor */
+    overflow: hidden; /* Limpia floats, si se usaran */
+    padding: 0 20px; /* Padding horizontal para evitar que el contenido toque los bordes */
+}
+
+a {
+    color: var(--accent-color); /* Color de enlaces */
+    text-decoration: none; /* Quita el subrayado por defecto */
+}
+
+a:hover {
+    text-decoration: underline; /* Subraya al pasar el ratón */
+}
+
+ul {
+    list-style: none; /* Quita los puntos de lista */
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading); /* Aplica la fuente de títulos */
+    margin-bottom: 15px; /* Espaciado inferior para títulos */
+}
+
+h2 {
+    font-size: 2.8em;
+    color: var(--text-light); /* Color para el h2 en la sección hero */
+}
+
+h3 {
+    font-size: 2.2em;
+    text-align: center; /* Centra los títulos de sección */
+    margin-bottom: 40px;
+    color: var(--primary-color); /* Color para los títulos de sección */
+}
+
+.btn {
+    display: inline-block; /* Permite aplicar padding y margins correctamente */
+    background: var(--accent-color); /* Color de fondo del botón */
+    color: var(--text-light); /* Color de texto del botón */
+    padding: 10px 20px; /* Relleno interno */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave para el hover */
+    margin-top: 20px;
+}
+
+.btn:hover {
+    /* Aquí hubo un pequeño error en el código original con 'darken()', 
+       que es una función de preprocesadores CSS como Sass/Less.
+       Para CSS puro, simplemente usa un color más oscuro o cambia la opacidad. */
+    background: #a3750a; /* Un dorado ligeramente más oscuro para el hover */
+    text-decoration: none;
+}
+
+/* Barra de Navegación */
+.navbar {
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 1rem 0;
+    position: fixed; /* Barra de navegación fija */
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra para darle profundidad */
+}
+
+.navbar .container {
+    display: flex; /* Para alinear logo y menú en la misma línea */
+    justify-content: space-between; /* Espacia el logo y el menú */
+    align-items: center; /* Alinea verticalmente */
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.navbar ul {
+    display: flex; /* Para alinear los ítems del menú en una fila */
+}
+
+.navbar ul li a {
+    color: var(--text-light);
+    padding: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Sección de Cabecera (Hero) */
+.hero-section {
+    /* Reemplaza esta URL con una imagen real. Asegúrate de que la ruta sea correcta. */
+    background: url('images/salon.png') no-repeat center center/cover;
+    color: var(--text-light);
+    height: 100vh; /* Ocupa el 100% de la altura de la vista */
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    text-align: center;
+    position: relative;
+    margin-top: 60px; /* Espacio para la barra de navegación fija. Ajusta si tu navbar es más alta. */
+}
+
+.hero-section::before { /* Overlay oscuro para mejor legibilidad del texto */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 50% de opacidad negra */
+    z-index: 1; /* Para que esté por debajo del texto */
+}
+
+.hero-section .container {
+    position: relative; /* Asegura que el contenido esté por encima del overlay */
+    z-index: 2; /* Para que esté por encima del overlay */
+}
+
+.hero-section h2 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Secciones de Contenido */
+section {
+    padding: 80px 0; /* Relleno vertical para cada sección */
+    margin-top: 20px; /* Pequeño margen entre secciones (opcional) */
+}
+
+.about-image {
+    max-width: 400px; /* O el tamaño que consideres */
+    height: auto;
+    border-radius: 8px; /* O un círculo si es un retrato */
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.about-section, .schedule-section {
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+.services-section {
+    background-color: var(--text-light); /* Fondo blanco para la sección de servicios */
+}
+
+.service-list {
+    display: grid; /* Usa CSS Grid para el layout de los servicios */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 30px; /* Espacio entre las tarjetas de servicio */
+    text-align: center;
+}
+.service-icon {
+    width: 60px; /* Ajusta el tamaño */
+    height: 60px;
+    margin-bottom: 15px;
+    /* Puedes añadir un color si son SVG y quieres que coincidan con tu paleta */
+    /* filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(15deg) brightness(90%); */
+}
+
+.service-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para las tarjetas */
+    transition: transform 0.3s ease; /* Efecto de elevación al pasar el ratón */
+}
+
+.service-item:hover {
+    transform: translateY(-5px); /* Desplaza la tarjeta ligeramente hacia arriba */
+}
+
+.service-item h4 {
+    font-size: 1.5em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.schedule-section .highlight {
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1.2em;
+}
+
+/* Pie de Página */
+.footer {
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.footer .contact-info, .footer .social-media {
+    flex: 1; /* Permite que ocupen espacio equitativamente */
+    min-width: 250px; /* Ancho mínimo para que no se aprieten demasiado */
+    margin-bottom: 20px; /* Margen inferior para responsividad */
+}
+
+.footer h4 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.footer ul {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.footer ul li {
+    margin: 0 10px;
+}
+
+/.footer ul li img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* Si usas iconos SVG o Font Awesome, no necesitarías un background-color */
+    /*background-color: var(--text-light); /* Fondo para placeholders o iconos simples */
+}
+
+.footer .copyright {
+    flex-basis: 100%; /* Ocupa todo el ancho disponible */
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column; /* Apila el logo y el menú */
+        text-align: center;
+    }
+
+    .navbar nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap; /* Permite que los ítems del menú se envuelvan */
+        justify-content: center;
+    }
+
+    .navbar nav ul li {
+        margin-bottom: 10px;
+    }
+
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+    }
+
+    .footer .container {
+        flex-direction: column; /* Apila la información de contacto y redes sociales */
+        align-items: center;
+    }
+
+    .footer .contact-info, .footer .social-media {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h2 {
+        font-size: 2em;
+    }
+}
